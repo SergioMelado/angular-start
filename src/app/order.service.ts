@@ -1,9 +1,18 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Product } from './product';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderServiceService {
+export class OrderService {
+  private backendURL: string = "http://localhost:8080/api/shop/orders";
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
+
+  createOrder(productList: Product[]): void {
+    this.httpClient.post(`${this.backendURL}`, productList);
+  }
 }

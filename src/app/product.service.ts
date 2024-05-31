@@ -14,8 +14,11 @@ export class ProductService {
     private httpClient: HttpClient
   ) { }
   
-
   findAllProducts(): Observable<Product[]> {
     return this.httpClient.get<Product[]>(`${this.backendURL}`)
+  }
+
+  findById(id: number): Observable<Product> {
+    return this.httpClient.get<Product>(`${this.backendURL}/${id}`)
   }
 }
