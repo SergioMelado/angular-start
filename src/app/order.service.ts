@@ -13,6 +13,6 @@ export class OrderService {
   ) { }
 
   createOrder(productList: Product[]): void {
-    this.httpClient.post(`${this.backendURL}`, productList);
+    this.httpClient.post(`${this.backendURL}`, {"products": [...productList]});
   }
 }

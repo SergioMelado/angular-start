@@ -19,7 +19,6 @@ export class CartService {
   }
 
   createOrder() {
-
     this.orderService.createOrder(this.items);
   }
 
