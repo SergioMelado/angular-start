@@ -13,6 +13,14 @@ export class OrderService {
   ) { }
 
   createOrder(productList: Product[]): void {
-    this.httpClient.post(`${this.backendURL}`, {"products": [...productList]});
+    this.httpClient.post(`${this.backendURL}`, {"products": [...productList]})
+    .subscribe({
+      next: data => {
+        console.log("Order Saved", data)
+      },
+      error: error => {
+        console.error("Error", error);
+      }
+    });
   }
 }
